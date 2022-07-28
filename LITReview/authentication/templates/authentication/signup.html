@@ -14,23 +14,19 @@
         </div>
         <div class="content">
             <div class="register-login">
-                <p>Je crée mon compte</p>
                 {% if form.errors %}
-                    {{ form.errors }}
+                    {{ form.username.errors }}
+                    {{ form.password1.errors }}
+                    {{ form.password2.errors }}
                 {% endif %}
+                <p>Je crée mon compte</p>
                 <form method="post">
-                    <p>
-                        <input type="text" name="username" maxlength="150" placeholder="Nom d'utilisateur" autofocus="" required="" id="id_username">
-                    </p>
-                    <p>
-                        <input type="password" name="password1" placeholder="Mot de passe" autocomplete="new-password" required="" id="id_password1">
-                    </p>
-                    <p>
-                        <input type="hidden" name="role" value="CREATOR" id="role">
-                    </p>
-                    <p>
-                    <input type="password" name="password2" placeholder="Confirmer mot de passe" autocomplete="new-password" required="" id="id_password2">
-                    </p>
+                    {{ form.username }}
+                    <br>
+                    {{ form.password1}}
+                    <br>
+                    {{ form.password2 }}
+
                     {% csrf_token %}
                     <div class="register-button">
                         <a class="bouton" href="{% url 'login' %}">Retourner</a>

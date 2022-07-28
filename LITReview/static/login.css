@@ -83,18 +83,17 @@ body{
     text-align: center;
     display: flex;
     flex-direction: column;
+
 }
 
 .register-login form{
-    position: relative;
     width: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 .register-button{
     display:flex;
     justify-content: space-around;
+    margin-top: 30px;
 }
 
 .errorlist{
@@ -102,4 +101,13 @@ body{
     list-style: none;
     color: white;
 
+}
+
+.field-witdh{
+    width: 85%;
+    margin-bottom: 10px;
+    text-align: center;
+    background: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    height: 2em;
 }

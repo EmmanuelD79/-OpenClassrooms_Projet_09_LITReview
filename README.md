@@ -31,6 +31,8 @@ Pour l'execution , vous devez aller dans le répertoire du projet et taper la co
 	<br> 
 ```
 	
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 	
 ```

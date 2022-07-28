@@ -1,0 +1,27 @@
+{% load review_extras %}
+<div class="ticket-user-date">
+    <div class="ticket-user">
+        <p>
+            {% get_poster_display ticket.user 'ticket' %}
+        </p>
+    </div>
+    <div class="ticket-date">
+        <p>
+            {{ ticket.time_created }}
+        </p>
+    </div>
+</div>
+<div class="ticket-title">
+        <p>
+            {{ ticket.title}}
+        </p>
+</div>
+<div class="ticket-description">
+    <p>
+        {{ticket.description }}
+    </p>
+</div>
+
+<div class="ticket-cover">
+    <img src="{{ ticket.image.url }}">
+</div>

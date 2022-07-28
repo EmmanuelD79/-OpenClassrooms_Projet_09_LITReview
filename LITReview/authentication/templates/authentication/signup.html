@@ -1,0 +1,44 @@
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <title>LITReview</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static '/img/logo.png' %}" alt="">
+        </div>
+        <div class="content">
+            <div class="register-login">
+                <p>Je crée mon compte</p>
+                {% if form.errors %}
+                    {{ form.errors }}
+                {% endif %}
+                <form method="post">
+                    <p>
+                        <input type="text" name="username" maxlength="150" placeholder="Nom d'utilisateur" autofocus="" required="" id="id_username">
+                    </p>
+                    <p>
+                        <input type="password" name="password1" placeholder="Mot de passe" autocomplete="new-password" required="" id="id_password1">
+                    </p>
+                    <p>
+                        <input type="hidden" name="role" value="CREATOR" id="role">
+                    </p>
+                    <p>
+                    <input type="password" name="password2" placeholder="Confirmer mot de passe" autocomplete="new-password" required="" id="id_password2">
+                    </p>
+                    {% csrf_token %}
+                    <div class="register-button">
+                        <a class="bouton" href="{% url 'login' %}">Retourner</a>
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

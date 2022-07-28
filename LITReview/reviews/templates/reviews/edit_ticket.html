@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Modifier le ticket</h2>
+    <form method="post">
+        <p>{{ edit_form.edit_ticket }}</p>
+        <p>
+            <label for="{{ edit_form.title.label }}">Titre&nbsp;:</label>
+            <br>
+            {{ edit_form.title}}
+        </p>
+        <p>
+            <label for="{{ edit_form.description.label }}">Description&nbsp;:</label>
+            <br>
+            {{ edit_form.description}}
+        </p>
+        <p>
+            <label for="{{ edit_form.image.label }}">Image&nbsp;:</label>
+            <br>
+            {{ edit_form.image}}
+        </p>
+        {% csrf_token %}
+        <button type="submit">Sauvegarder</button>
+    </form>
+    <form method="post">
+        {{ delete_form }}
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+    </form>
+
+{% endblock content %}

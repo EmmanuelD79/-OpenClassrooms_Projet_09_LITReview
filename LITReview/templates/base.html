@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>LITReview</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+        </div>
+        <div class="navbar">
+            <ul>
+                <li><a href="{% url 'feed' %}">Flux</a></li>
+                <li><a href="{% url 'posts' %}">Posts</a></li>
+                <li><a href="{% url 'follow_users' %}">Abonnements</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+    <div class="content">
+        {% block content %}{% endblock content %}
+    </div>
+    <footer>
+        Projet n°9 - Développement d'un site web avec DJANGO -  formation OPENCLASSROOMS développeur Python.
+        <br>
+        Réalisé par Emmanuel DEMEULNAERE <a href="https://github.com/EmmanuelD79">voir mon Github</a>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load review_extras %}
+
+{% block content %}
+    <h1>Mes posts</h1>
+    {% for instance in page_obj %}
+        <div class="review post">
+            {% if instance|model_type == 'Review' %}
+                {% include 'reviews/partials/review_snippet.html' with review=instance %}
+
+            {% elif instance|model_type == 'Ticket' %}
+                {% include 'reviews/partials/ticket_snippet.html' with ticket=instance post=instance  %}
+
+            {% endif %}
+            {% include 'reviews/partials/edit_button_snippet.html' with instance=instance %}
+        </div>
+    {% endfor %}
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page=1"><< première</a>
+            <a href="?page={{ page_obj.previous_page_number }}">précédente</a>
+        {% endif %}
+        <span>
+            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">suivante</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">dernière >></a>
+        {% endif %}
+    </span>
+
+{% endblock content %}

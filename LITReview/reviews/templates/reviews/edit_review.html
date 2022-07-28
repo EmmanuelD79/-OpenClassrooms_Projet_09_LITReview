@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Modifier la critique</h2>
+    <form class="posting-form" method="post" enctype="multipart/form-data">
+                {{ edit_form.as_p }}
+                {% csrf_token %}
+            <div class="posting-button">
+                <button type="submit">Sauvegarder</button>
+            </div>
+    </form>
+
+{% endblock content %}

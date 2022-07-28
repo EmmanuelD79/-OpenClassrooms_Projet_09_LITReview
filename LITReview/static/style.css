@@ -1,0 +1,376 @@
+body{
+
+    width: 90%;
+    margin: auto;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+
+}
+
+header{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 1.5em;
+}
+
+.logo{
+    position: relative;
+    left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.logo img{
+    height: 100px;
+}
+
+.navbar{
+    width: 80%;
+
+}
+
+.navbar ul{
+    position: relative;
+    float:right;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.navbar li{
+    margin-right: 20px;
+    font-size: 0.8em;
+}
+
+.navbar li a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbar li a:hover{
+    background-color: black;
+    color: white;
+}
+
+.content{
+    width: 100%;
+    background-color: white;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.make_button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.make_button a{
+    background-color: black;
+    text-decoration: none;
+    width: 300px;
+    color: white;
+    font-size: 1em;
+    border: solid 1px black;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 2;
+
+}
+
+.make_button a:hover{
+    background-color: white;
+    color: black;
+}
+
+.review{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    border-radius: 30px;
+    padding: 20px 20px 20px 20px;
+    margin-bottom: 30px;
+}
+
+.review-ticket{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    border-radius: 30px;
+    padding: 20px 20px 20px 20px;
+    margin-bottom: 30px;
+}
+
+.review-user-date, .review-headline-rate, .ticket-user-date{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.review-user, .ticket-user{
+    width: 50%;
+}
+
+.review-date, .ticket-date{
+    position: relative;
+    width: 50%;
+}
+
+.review-date p, .ticket-date p{
+    position: relative;
+    float: right;
+}
+
+.review-headline-rate p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.stars-rating{
+    font-size: 2em;
+}
+
+.make-review a{
+    position: relative;
+    float: right;
+    background-color: black;
+    text-decoration: none;
+    width: 300px;
+    color: white;
+    font-size: 1em;
+    border: solid 1px black;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 2;
+}
+
+.make-review a:hover{
+    background-color: white;
+    color: black;
+}
+
+
+.make-review {
+    width: 100%;
+
+}
+
+.posting-form{
+    width: 700px;
+    display:flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+
+}
+
+footer{
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    background: white;
+}
+
+.posting-button{
+    display:flex;
+    justify-content: flex-end;
+}
+
+button{
+    background-color: black;
+    text-decoration: none;
+    display: inline-block;
+    width: 200px;
+    color: white;
+    font-size: 1em;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+}
+
+.edit-buttons, .respond-ticket{
+    display: flex;
+    justify-content: end;
+}
+
+.bouton-ticket{
+    background-color: black;
+    border: solid 1px black;
+    width: 200px;
+}
+
+.bouton-width{
+    width:150px;
+}
+
+.field-width{
+    width: 100%;
+}
+
+#id_image::file-selector-button{
+    border: none;
+    background: blue;
+    color: white;
+}
+
+
+.bouton-edit, .bouton-delete, .bouton-ticket, #id_image::file-selector-button{
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 2;
+    margin-right: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bouton-edit{
+    background: blue;
+    border: 1px solid blue;
+}
+
+.bouton-delete{
+    background-color: red;
+    border: solid 1px red;
+}
+
+.bouton-delete:hover{
+     background-color: white;
+     color: red;
+
+}
+
+.bouton-edit:hover, #id_image::file-selector-button:hover, .pagination a:hover{
+     background-color: white;
+     color: blue;
+
+}
+
+.radio-block{
+    display: flex;
+    justify-content: space-around;
+}
+
+.radio-block label{
+    display:flex;
+    align-items: center;
+    font-size: 1.3em;
+    height: 100%;
+}
+
+.radio-block label input[type=radio]{
+    margin-right: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.ticket-cover img{
+    height : 350px;
+    width : auto;
+}
+
+.pagination a{
+    width: 150px;
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    background: blue;
+    border: 1px solid blue;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.5em;
+    margin-right: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.flex-row{
+    display:flex;
+    line-height: 2em;
+    width:80%;
+    border: 1px solid black;
+}
+
+.flex-row:last-child{
+    margin-bottom: 30px;
+}
+
+.user-unfollow{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    background-color : red;
+    border: 1px solid black;
+    width: 15%;
+}
+
+.user-unfollow:hover{
+    background-color : white;
+    color: red;
+    border-color: red;
+}
+
+.user-box{
+    width: 85%;
+
+    padding-left: 10px;
+}
+
+.form-user-add{
+    background-color: #F1F1F1;
+    width: 75%;
+    height: 2em;
+}
+
+.form-user{
+    position:relative;
+    width: 80%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.form-user ul{
+    display: none;
+}
+
+.form-user p{
+    width: 85%;
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+
+}
+
+
+.button-add-user{
+    width: 140px;
+    height: 2em;
+}

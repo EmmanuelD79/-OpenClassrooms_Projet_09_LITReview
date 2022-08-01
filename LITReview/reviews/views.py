@@ -1,8 +1,7 @@
 from itertools import chain
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required, permission_required
-from .models import UserFollows
+from django.contrib.auth.decorators import login_required
 from authentication.models import User
 from . import forms, models
 from django.conf import settings
@@ -12,8 +11,6 @@ REDIRECT_URL = settings.REDIRECT_URL
 
 @login_required
 def feed(request):
-
-   
     user = get_object_or_404(User, id=request.user.id)
     all_reviews = models.Review.objects.filter(user=user.id)
     reviews = models.Review.objects.filter(user__in=user.follows.all())
@@ -107,6 +104,7 @@ def create_review(request):
 
     return render(request, 'reviews/create_review.html', context=context)
 
+
 @login_required
 def view_review(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
@@ -143,7 +141,7 @@ def edit_review(request, review_id):
 @login_required
 def delete_review(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
-    ticket = get_object_or_404(models.Ticket, id= review.ticket.id)
+    ticket = get_object_or_404(models.Ticket, id=review.ticket.id)
     ticket.has_review = "False"
     ticket.save()
     review.delete()
@@ -172,7 +170,6 @@ def delete_sub_user(request, sub_pk):
 def edit_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     edit_form = forms.TicketForm(instance=ticket)
-    delete_form = forms.DeleteTicketForm()
 
     if request.method == 'POST':
         edit_form = forms.TicketForm(request.POST, request.FILES, instance=ticket)
@@ -181,10 +178,9 @@ def edit_ticket(request, ticket_id):
             ticket.save()
             return redirect(REDIRECT_URL)
 
-
     context = {
         'edit_form': edit_form,
-        'ticket' : ticket,
+        'ticket': ticket,
     }
 
     return render(request, 'reviews/edit_ticket.html', context=context)
@@ -192,10 +188,9 @@ def edit_ticket(request, ticket_id):
 
 @login_required
 def follow_users(request):
-
     user = get_object_or_404(User, id=request.user.id)
     followed_by = models.UserFollows.objects.filter(user=user)
-    followed_by_id =[followed.followed_user_id for followed in models.UserFollows.objects.filter(user=user)]
+    followed_by_id = [followed.followed_user_id for followed in models.UserFollows.objects.filter(user=user)]
     follow = models.UserFollows.objects.filter(followed_user=user)
     choices = User.objects.exclude(id=user.id).exclude(id__in=followed_by_id).values_list("id", "username")
     form = forms.FollowUsersForm(request.POST, choices=choices)
@@ -203,7 +198,7 @@ def follow_users(request):
         form = forms.FollowUsersForm(request.POST, choices=choices)
         followed_id = request.POST.get('followed_id')
         followed_user = User.objects.get(id=followed_id)
-        
+
         if form.is_valid():
             follow = models.UserFollows.objects.create(user=user, followed_user=followed_user)
             follow.save()

@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.conf import settings
@@ -48,4 +46,3 @@ def signup_page(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
 
     return render(request, 'authentication/signup.html', context={'form': form})
-

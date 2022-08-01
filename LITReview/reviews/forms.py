@@ -1,5 +1,3 @@
-from tkinter import HIDDEN
-from tkinter.tix import Tree
 from django import forms
 from . import models
 from django.contrib.auth import get_user_model
@@ -9,18 +7,21 @@ User = get_user_model()
 
 
 class TicketForm(forms.ModelForm):
-    edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    edit_ticket = forms.BooleanField(
+        widget=forms.HiddenInput,
+        initial=True
+        )
     title = forms.CharField(
         max_length=128,
         widget=forms.TextInput(attrs={'class': "xl-field"})
     )
     description = forms.CharField(
         max_length=2048,
-        widget= forms.Textarea(attrs = {'class': "xl-field"})
+        widget=forms.Textarea(attrs={'class': "xl-field"})
     )
 
     image = forms.ImageField(
-                      required=True, 
+                      required=True,
                       widget=forms.FileInput,
                       )
 
@@ -34,7 +35,7 @@ class DeleteTicketForm(forms.Form):
 
 
 class ReviewForm(forms.ModelForm):
-    CHOICES = [(0,0), (1,1), (2,2), (3,3), (4,4), (5,5)]
+    CHOICES = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
 
     edit_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
     headline = forms.CharField(
@@ -45,10 +46,16 @@ class ReviewForm(forms.ModelForm):
     body = forms.CharField(
         max_length=8192,
         label='Commentaire',
-        widget= forms.Textarea(attrs={'class': "xl-field"})
+        widget=forms.Textarea(attrs={'class': "xl-field"})
     )
 
-    rating = forms.CharField(label='Note', widget=forms.RadioSelect(choices=CHOICES, attrs={'class':'radio-block'}))
+    rating = forms.CharField(
+        label='Note',
+        widget=forms.RadioSelect(
+            choices=CHOICES,
+            attrs={'class': 'radio-block'}
+            )
+        )
 
     class Meta:
         model = models.Review
@@ -66,5 +73,8 @@ class FollowUsersForm(forms.Form):
 
     def __init__(self, *args, choices, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['followed_id'] = forms.ChoiceField(label='Nom utilisateur', choices=choices)
+        self.fields['followed_id'] = forms.ChoiceField(
+            label='Nom utilisateur',
+            choices=choices
+            )
         self.fields['followed_id'].widget.attrs.update({'class': 'form-user__add'})

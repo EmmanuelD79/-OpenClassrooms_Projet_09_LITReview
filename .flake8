@@ -1,0 +1,6 @@
+[flake8]
+exclude =
+    env,
+format = html
+htmldir = flake-report
+max-line-length = 135

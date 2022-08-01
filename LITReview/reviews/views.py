@@ -2,6 +2,7 @@ from itertools import chain
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
+from .models import UserFollows
 from authentication.models import User
 from . import forms, models
 from django.conf import settings
@@ -11,10 +12,13 @@ REDIRECT_URL = settings.REDIRECT_URL
 
 @login_required
 def feed(request):
-    all_reviews = models.Review.objects.filter(user=request.user)
-    reviews = models.Review.objects.filter(user__in=request.user.follows.all())
-    all_tickets = models.Ticket.objects.filter(user=request.user)
-    tickets = models.Ticket.objects.filter(user__in=request.user.follows.all()).exclude(
+
+   
+    user = get_object_or_404(User, id=request.user.id)
+    all_reviews = models.Review.objects.filter(user=user.id)
+    reviews = models.Review.objects.filter(user__in=user.follows.all())
+    all_tickets = models.Ticket.objects.filter(user=user.id)
+    tickets = models.Ticket.objects.filter(user__in=user.follows.all()).exclude(
         review__in=reviews
     )
     reviews_and_tickets = sorted(
@@ -86,6 +90,7 @@ def create_review(request):
         if any([ticket_form.is_valid(), review_form.is_valid()]):
             ticket = ticket_form.save(commit=False)
             ticket.user = request.user
+            ticket.has_review = "True"
             ticket.save()
 
             review = review_form.save(commit=False)
@@ -110,7 +115,6 @@ def view_review(request, review_id):
 
 @login_required
 def edit_review(request, review_id):
-
     review = get_object_or_404(models.Review, id=review_id)
     edit_form = forms.ReviewForm(instance=review)
     delete_form = forms.DeleteReviewForm()
@@ -139,8 +143,10 @@ def edit_review(request, review_id):
 @login_required
 def delete_review(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
+    ticket = get_object_or_404(models.Ticket, id= review.ticket.id)
+    ticket.has_review = "False"
+    ticket.save()
     review.delete()
-
     return redirect(REDIRECT_URL)
 
 
@@ -154,7 +160,9 @@ def delete_ticket(request, ticket_id):
 
 @login_required
 def delete_sub_user(request, sub_pk):
+    user = get_object_or_404(User, id=request.user.id)
     sub = get_object_or_404(models.UserFollows, pk=sub_pk)
+    user.follows.remove(sub.followed_user)
     sub.delete()
 
     return redirect('follow_users')
@@ -162,27 +170,21 @@ def delete_sub_user(request, sub_pk):
 
 @login_required
 def edit_ticket(request, ticket_id):
-
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     edit_form = forms.TicketForm(instance=ticket)
     delete_form = forms.DeleteTicketForm()
 
     if request.method == 'POST':
-        if 'edit_ticket' in request.POST:
-            edit_form = forms.TicketForm(request.POST, instance=ticket)
-            if edit_form.is_valid():
-                edit_form.save()
-                return redirect(REDIRECT_URL)
+        edit_form = forms.TicketForm(request.POST, request.FILES, instance=ticket)
+        if edit_form.is_valid():
+            ticket = edit_form.save(commit=False)
+            ticket.save()
+            return redirect(REDIRECT_URL)
 
-        if 'delete_ticket' in request.POST:
-            delete_form = forms.DeleteTicketForm(request.POST)
-            if delete_form.is_valid():
-                ticket.delete()
-                return redirect(REDIRECT_URL)
 
     context = {
         'edit_form': edit_form,
-        'delete_form': delete_form,
+        'ticket' : ticket,
     }
 
     return render(request, 'reviews/edit_ticket.html', context=context)
@@ -191,20 +193,21 @@ def edit_ticket(request, ticket_id):
 @login_required
 def follow_users(request):
 
-    followed_by = models.UserFollows.objects.filter(user=request.user)
-    followed_by_id =[followed.followed_user_id for followed in models.UserFollows.objects.filter(user=request.user)]
-    follow = models.UserFollows.objects.filter(followed_user=request.user)
-    choices = User.objects.exclude(id=request.user.id).exclude(id__in=followed_by_id).values_list("id", "username")
-
+    user = get_object_or_404(User, id=request.user.id)
+    followed_by = models.UserFollows.objects.filter(user=user)
+    followed_by_id =[followed.followed_user_id for followed in models.UserFollows.objects.filter(user=user)]
+    follow = models.UserFollows.objects.filter(followed_user=user)
+    choices = User.objects.exclude(id=user.id).exclude(id__in=followed_by_id).values_list("id", "username")
     form = forms.FollowUsersForm(request.POST, choices=choices)
     if request.method == 'POST':
         form = forms.FollowUsersForm(request.POST, choices=choices)
         followed_id = request.POST.get('followed_id')
         followed_user = User.objects.get(id=followed_id)
-
+        
         if form.is_valid():
-            follow = models.UserFollows.objects.create(user=request.user, followed_user=followed_user)
+            follow = models.UserFollows.objects.create(user=user, followed_user=followed_user)
             follow.save()
+            user.follows.add(followed_user)
             return redirect('follow_users')
 
     context = {
@@ -225,6 +228,8 @@ def respond_ticket(request, ticket_id):
         if review_form.is_valid():
             review = review_form.save(commit=False)
             review.user = request.user
+            ticket.has_review = "True"
+            ticket.save()
             review.ticket = ticket
             review.save()
 

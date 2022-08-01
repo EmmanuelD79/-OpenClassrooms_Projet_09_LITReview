@@ -4,7 +4,7 @@
 {% block content %}
     <h1>Mes posts</h1>
     {% for instance in page_obj %}
-        <div class="review post">
+        <div class="review">
             {% if instance|model_type == 'Review' %}
                 {% include 'reviews/partials/review_snippet.html' with review=instance %}
 

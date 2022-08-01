@@ -1,0 +1,28 @@
+.posting-form{
+    width: 700px;
+    @include flex-column;
+    padding-bottom: 20px;
+
+}
+
+.form-user{
+    position:relative;
+    width: 80%;
+    @include flex-row(center, space-between);
+
+    ul{
+        display: none;
+    }
+
+    p{
+        width: 85%;
+        @include flex-row(center, space-around);
+    }
+
+    &__add{
+        background-color: $site-color-field;
+        width: 75%;
+        height: 2em;
+    }
+
+}

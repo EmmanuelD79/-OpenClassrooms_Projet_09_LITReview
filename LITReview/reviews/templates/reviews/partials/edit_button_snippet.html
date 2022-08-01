@@ -1,12 +1,12 @@
 {% load review_extras %}
 
-<div class="edit-buttons">
+<div class="bloc__btns">
             {% if instance|model_type == 'Review' %}
-                <a class="bouton-edit bouton-width" href="{% url 'edit_review' instance.id %}">Modifier</a>
-                <a class="bouton-delete bouton-width" href="{% url 'delete_review' instance.id %}">Supprimer</a>
+                <a class="btn btn--edit btn--width" href="{% url 'edit_review' instance.id %}">Modifier</a>
+                <a class="btn btn--delete btn--width" href="{% url 'delete_review' instance.id %}">Supprimer</a>
             {% elif instance|model_type == 'Ticket' %}
                 <p>{{ edit_form.edit_ticket }}</p>
-                <a class="bouton-edit bouton-width" href="{% url 'edit_ticket' instance.id %}">Modifier</a>
-                <a class="bouton-delete bouton-width" href="{% url 'delete_ticket' instance.id %}">Supprimer</a>
+                <a class="btn btn--edit btn--width" href="{% url 'edit_ticket' instance.id %}">Modifier</a>
+                <a class="btn btn--delete btn--width" href="{% url 'delete_ticket' instance.id %}">Supprimer</a>
             {% endif %}
 </div>

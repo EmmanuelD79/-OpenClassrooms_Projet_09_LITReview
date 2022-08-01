@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <title>LITReview</title>
 </head>
-<body>
-    <div class="container">
+<body id="login-body">
+    <div class="login-container">
         <div class="logo">
             <img src="{% static '/img/logo.png' %}" alt="">
         </div>
         <div class="content">
-            <div class="register-login">
+            <div class="register__content">
                 {% if form.errors %}
                     {{ form.username.errors }}
                     {{ form.password1.errors }}
@@ -28,9 +28,9 @@
                     {{ form.password2 }}
 
                     {% csrf_token %}
-                    <div class="register-button">
-                        <a class="bouton" href="{% url 'login' %}">Retourner</a>
-                        <button type="submit">S'inscrire</button>
+                    <div class="register__action-bloc">
+                        <a class="action-button" href="{% url 'login' %}">Retourner</a>
+                        <button class="action-button" type="submit">S'inscrire</button>
                     </div>
                 </form>
             </div>

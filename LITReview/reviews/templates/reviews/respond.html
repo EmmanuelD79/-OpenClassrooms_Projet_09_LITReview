@@ -3,30 +3,30 @@
 {% block content %}
     <h2>Créer une critique</h2>
     <div class="review">
-        <div class="ticket-user-date">
-            <div class="ticket-user">
+        <div class="bloc__user-date">
+            <div class="bloc__user">
                 <p>
                     {% get_poster_display ticket.user 'ticket' %}
                 </p>
             </div>
-            <div class="ticket-date">
+            <div class="bloc__date">
                 <p>
                     {{ ticket.time_created }}
                 </p>
             </div>
         </div>
-        <div class="ticket-title">
+        <div>
                 <p>
-                    <a href="{% url 'view_ticket' ticket.id  %}">{{ ticket.title}}</a>
+                    {{ ticket.title}}
                 </p>
         </div>
-        <div class="ticket-description">
+        <div>
             <p>
                 {{ticket.description }}
             </p>
         </div>
 
-        <div class="ticket-cover">
+        <div class="bloc__cover">
             <img src="{{ ticket.image.url }}">
         </div>
 
@@ -35,7 +35,7 @@
     <form class="posting-form" method="post" enctype="multipart/form-data">
             {{ review_form.as_p }}
             {% csrf_token %}
-            <div class="posting-button">
+            <div class="bloc__btns">
                 <button type="submit">Publier</button>
             </div>
     </form>

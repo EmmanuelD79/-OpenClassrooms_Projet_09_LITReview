@@ -9,20 +9,13 @@ def model_type(instance):
     return type(instance).__name__
 
 
-@register.filter
-def existing_review(instance):
-        reviews = models.Review.objects.filter(ticket=instance)
-        if len(reviews) == 0:
-            return True
-
-
 @register.simple_tag(takes_context=True)
 def get_poster_display(context, user, instance):
     action = "demandé"
     if instance == "review":
         action = "publié"
     if user == context['user']:
-        return f"vous avez {action} une critique"
+        return f"Vous avez {action} une critique"
     return f"{user.username} a {action} une critique"
 
 

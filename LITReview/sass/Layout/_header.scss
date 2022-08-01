@@ -1,0 +1,9 @@
+#site_header{
+    width: 100%;
+    @include flex-row(flex-end, space-between);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: $site-color;
+    color: $site-color-font;
+    font-size: 1.5em;
+}

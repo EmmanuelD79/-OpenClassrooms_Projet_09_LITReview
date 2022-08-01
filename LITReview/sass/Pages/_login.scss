@@ -1,0 +1,72 @@
+#login-body{
+    position: relative;
+    font-family: $login-font-family;
+    background-color: $login-color-body;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-container{
+    @include flex-column(center, space-around);
+    @include body-center(50vw, none, 490px, 360px);
+    background-color: $login-color;
+    color: $login-color-font;
+    border-radius: 30px;
+}
+
+.logo{
+
+    img{
+        position: relative;
+        width: 100px;
+        margin-top: 20%;
+        margin-bottom: 30%;
+    }
+}
+
+.content{
+
+    @include flex-row(center, space-around);
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.login{
+    
+    @extend %box-login;
+
+    input{
+        margin-bottom: 20px;
+    }
+
+    form{
+        @include flex-column;
+
+    }
+
+}
+
+.register{
+
+    @extend %box-login;
+
+    &__content{
+        @include flex-column;
+        text-align: center;
+        width: 100%;
+
+        form{
+            width: 100%;
+        }
+    }
+
+    &__action-bloc{
+        @include flex-row($justify:space-around);
+        margin-top: 30px;
+    }
+
+}
+
+
+
+

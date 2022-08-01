@@ -1,0 +1,20 @@
+%box-login{
+    position: relative;
+    @include flex-column(center, center);
+    text-align: center;
+    padding: 30px 20px 30px 20px;
+    @include box(38%, 100px, $login-color-body, 2px, 20px);
+}
+
+%box-display{
+    @include flex-row(center, none);
+    width: 100%;
+}
+
+%edit{
+    @include btn-color-bg($site-color-button-edit, $site-color-font-button);
+}
+
+%delete{
+    @include btn-color-bg($site-color-button-delete, $site-color-font-button);
+}

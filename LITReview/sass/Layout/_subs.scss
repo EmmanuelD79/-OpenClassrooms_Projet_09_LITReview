@@ -1,0 +1,10 @@
+.flex-row{
+    @include flex-row;
+    line-height: 2em;
+    width:80%;
+    border: 1px solid black;
+
+    &:last-child{
+        margin-bottom: 30px;
+    }
+}

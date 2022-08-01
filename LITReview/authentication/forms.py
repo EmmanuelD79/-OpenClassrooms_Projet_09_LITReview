@@ -11,9 +11,9 @@ class LoginForm(forms.Form):
 
 class SignupForm(UserCreationForm):
 
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'field-witdh', 'placeholder': "Nom d'utilisateur" }))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'field-witdh', 'placeholder': "Mot de passe" }))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'field-witdh', 'placeholder': "Confirmer mot de passe" }))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'field-box', 'placeholder': "Nom d'utilisateur" }))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'field-box', 'placeholder': "Mot de passe" }))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'field-box', 'placeholder': "Confirmer mot de passe" }))
 
     class Meta(UserCreationForm):
         model = get_user_model()

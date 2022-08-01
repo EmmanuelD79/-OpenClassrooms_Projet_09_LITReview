@@ -1,0 +1,121 @@
+.base-body{
+    width: 90%;
+    margin: auto;
+    @include flex-column;
+    font-family: $site-font-family;
+    background-color: $site-color-body;
+}
+
+// logo //
+.base-logo{
+    position: relative;
+    left: 20px;
+    @include flex-row(center, center);
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    img{
+        height: 100px;
+        margin-right: 30px;
+    }
+
+    h1{
+        font-family: $logo-font;
+        font-size: 4em;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+// content //
+.base-content{
+    width: 100%;
+    @include flex-column(center, space-around);
+    background-color: $site-color;
+    margin-bottom: 30px;
+}
+
+// make_button //
+.create-button-box{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include flex-row(center, space-around);
+}
+
+.review{
+    @include flex-column;
+    @include box(700px, none, $site-color-body, 1px, 8px);
+    padding: 20px 20px 20px 20px;
+    margin-bottom: 30px;
+    box-shadow: 10px 5px 5px $site-color-body;
+
+    &__ticket{
+        @include flex-column;
+        border: solid 1px $site-color-body;
+        border-radius: 8px;
+        padding: 20px 20px 20px 20px;
+        margin-bottom: 30px;
+        box-shadow: 2px 2px 2px $site-color-body;
+    }
+
+}
+
+// review-user etc...//
+.bloc{
+
+    &__user-date{
+        @extend %box-display;
+    }
+
+    &__user{
+        width: 50%;
+    }
+
+    &__date{
+        position: relative;
+        width: 50%;
+
+        p {
+            position: relative;
+            float: right;
+        }
+    }
+
+    &__headline-rate{
+        @extend %box-display;
+
+    }
+
+    &__stars{
+        font-size: 2em;
+
+
+    }
+
+    &__btns{
+        @include flex-row($justify: end);
+    }
+
+    &__cover{
+
+        img{
+            height : 350px;
+            width : auto;
+        }
+    }
+
+    &__post{
+        @include flex-row($justify: flex-end);
+    }  
+}
+
+// make-review //
+.create-review{
+    width: 100%;
+}
+
+.user-box{
+    width: 85%;
+    padding-left: 10px;
+}

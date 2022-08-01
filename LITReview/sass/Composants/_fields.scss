@@ -1,0 +1,35 @@
+.field-box{
+    width: 85%;
+    margin-bottom: 10px;
+    text-align: center;
+    background: $login-color-field;
+    border: 1px solid $login-color-field;
+    height: 2em;
+}
+
+
+.radio-block{
+
+    @include flex-row($justify: space-around);
+    list-style: none;
+
+    label{
+        @include flex-row(center);
+        font-size: 1.3em;
+        height: 100%;
+
+        input[type=radio]{
+            margin-right: 10px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+    }
+}
+
+.field-width{
+    width: 100%;
+}
+
+.xl-field{
+    width: 100%;
+}

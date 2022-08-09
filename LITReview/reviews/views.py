@@ -142,7 +142,7 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     review = get_object_or_404(models.Review, id=review_id)
     ticket = get_object_or_404(models.Ticket, id=review.ticket.id)
-    ticket.has_review = "False"
+    ticket.has_review = False
     ticket.save()
     review.delete()
     return redirect(REDIRECT_URL)
@@ -223,7 +223,7 @@ def respond_ticket(request, ticket_id):
         if review_form.is_valid():
             review = review_form.save(commit=False)
             review.user = request.user
-            ticket.has_review = "True"
+            ticket.has_review = True
             ticket.save()
             review.ticket = ticket
             review.save()

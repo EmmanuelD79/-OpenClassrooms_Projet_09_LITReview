@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
     <h2>Modifier le ticket</h2>
     <form class="posting-form" method="post" enctype="multipart/form-data">
-
         <p>{{ edit_form.edit_ticket }}</p>
         <p>
             <label for="{{ edit_form.title.label }}">Titre&nbsp;:</label>
@@ -14,25 +12,18 @@
             <label for="{{ edit_form.description.label }}">Description&nbsp;:</label>
             <br>
             {{ edit_form.description}}
-
         </p>
         <div class="bloc__cover">
             <img src="{{ ticket.image.url }}" alt="">
             <br>
-            
         </div>
         <p>
             <label for="id_{{ edit_form.image.name }}" class="btn btn--edit btn--width">Télécharger</label>
             {{ edit_form.image }}
         </p>
         {% csrf_token %}
-
         <div class="bloc__post">
-
             <button  type="submit">Sauvegarder</button>
-        </div>
-        
+        </div> 
     </form>
-   
-
 {% endblock content %}

@@ -8,9 +8,9 @@ Les utilisateurs connectés peuvent :
 <ul>
 <li>Demander des critiques de livres et des articles grâce à la création de ticket;</li>
 <li>Publier des critiques de livres et des articles;</li>
-<li>Suivre plusieurs utilisateurs avec la possibilité de saisir le nom de l'utilisateur qu'il souhaite suivre;</li>
-<li>Accéder à un flux contenant les tickets et avis de tous les utilisateurs qu'il suit;</li>
-<li>Voir dans son flux ses propres tickets et avis ainsi les réponses des autres utilisateurs;</li>
+<li>Suivre plusieurs utilisateurs avec la possibilité de saisir le nom de l'utilisateur qu'ils souhaitent suivre;</li>
+<li>Accéder à un flux contenant les tickets et avis de tous les utilisateurs qu'ils suivent;</li>
+<li>Voir dans leur flux leurs propres tickets et avis ainsi les réponses des autres utilisateurs;</li>
 <li>Modifier ou supprimer les tickets;</li>
 <li>Ne plus suivre des utilisateurs.</li>
 </ul>

@@ -81,12 +81,12 @@ pip install <nom du paquage>
 Démarrage
 Pour démarrer le projet, vous devez aller dans le répertoire du projet et taper sur votre terminal la commande:
 
-<br> 
 ```
-	
+
 python manage.py migrate
 python manage.py runserver
-	
+
 ```
+
 
 L'application web est disponible en local à l'adresse:  http://localhost:8000/

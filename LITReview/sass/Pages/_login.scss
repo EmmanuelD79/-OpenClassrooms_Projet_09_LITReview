@@ -12,6 +12,9 @@
     background-color: $login-color;
     color: $login-color-font;
     border-radius: 30px;
+    @include mobile-only{
+        @include body-center(98vw, 98vh, 98vw, 98vh);
+    }
 }
 
 .logo{
@@ -29,6 +32,11 @@
     @include flex-row(center, space-around);
     width: 100%;
     padding-bottom: 20px;
+
+    @include mobile-only{
+        @include flex-column(center, space-around);
+        height: 100vh;
+    }
 }
 
 .login{
@@ -42,6 +50,10 @@
     form{
         @include flex-column;
 
+    }
+
+    @include mobile-only{
+        @include box(80vw, 100px, $login-color-body, 2px, 20px);
     }
 
 }
@@ -63,6 +75,15 @@
     &__action-bloc{
         @include flex-row($justify:space-around);
         margin-top: 30px;
+
+        @include mobile-only{
+           @include flex-column(center, space-around);
+           height: 15vh;
+        }
+    }
+
+    @include mobile-only{
+        @include box(80vw, 100px, $login-color-body, 2px, 20px);
     }
 
 }

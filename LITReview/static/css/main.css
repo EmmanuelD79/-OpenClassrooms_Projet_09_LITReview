@@ -311,6 +311,10 @@ button:hover {
   border: 1px solid black;
   width: 200px;
 }
+.btn:hover {
+  background-color: white;
+  color: black;
+}
 
 .button-add-user {
   width: 15vw;
@@ -438,6 +442,19 @@ button:hover {
   color: black;
   border-radius: 30px;
 }
+@media screen and (max-width: 599px) {
+  .login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 98vw;
+    height: 98vh;
+    min-width: 98vw;
+    min-height: 98vh;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
 
 .logo img {
   position: relative;
@@ -460,6 +477,23 @@ button:hover {
   width: 100%;
   padding-bottom: 20px;
 }
+@media screen and (max-width: 599px) {
+  .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    height: 100vh;
+  }
+}
 
 .login input {
   margin-bottom: 20px;
@@ -478,6 +512,14 @@ button:hover {
   -webkit-box-pack: none;
       -ms-flex-pack: none;
           justify-content: none;
+}
+@media screen and (max-width: 599px) {
+  .login {
+    width: 80vw;
+    height: 100px;
+    border: solid 2px black;
+    border-radius: 20px;
+  }
 }
 
 .register__content {
@@ -512,6 +554,31 @@ button:hover {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   margin-top: 30px;
+}
+@media screen and (max-width: 599px) {
+  .register__action-bloc {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    height: 15vh;
+  }
+}
+@media screen and (max-width: 599px) {
+  .register {
+    width: 80vw;
+    height: 100px;
+    border: solid 2px black;
+    border-radius: 20px;
+  }
 }
 
 .base-body {

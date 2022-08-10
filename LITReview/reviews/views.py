@@ -87,7 +87,7 @@ def create_review(request):
         if any([ticket_form.is_valid(), review_form.is_valid()]):
             ticket = ticket_form.save(commit=False)
             ticket.user = request.user
-            ticket.has_review = "True"
+            ticket.has_review = True
             ticket.save()
 
             review = review_form.save(commit=False)

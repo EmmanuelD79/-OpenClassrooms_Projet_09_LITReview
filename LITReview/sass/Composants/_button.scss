@@ -89,6 +89,9 @@ button{
         @include btn-bg-border($site-color-button);
         width: 200px;
         } 
+        &:hover{
+            @include btn-color-bg($site-color-button,$site-color-font-button);
+        }
 }
 
 .button-add-user{

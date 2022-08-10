@@ -26,13 +26,67 @@ https://github.com/EmmanuelD79/OpenClassrooms_Projet_09_LITReview.git
 
 ```
 
+Pré-requis
+créer un environnement virtuel à l'aide de votre terminal en tapant la commande:
 
-Pour l'execution , vous devez aller dans le répertoire du projet et taper la commande:
-	<br> 
+```
+
+python -m venv env
+
+````
+
+puis l'activer :
+sur windows :
+
+```
+
+.\env\scripts\activate
+
+```
+
+sur mac et linux :
+
+```
+
+source env/bin/activate
+
+```
+
+Installation
+Pour utiliser ce projet, il est nécessaire d'installer les modules du fichier requirements.txt.
+
+Pour installer automatiquement ces modules, dans votre terminal, vous devez aller dans le dossier du projet et ensuite taper la commande suivante :
+```
+
+pip install -r requirements.txt
+
+```
+
+ou le faire manuellement en consultant le fichier requirements.txt en tapant sur votre terminal la commande :
+
+```
+
+cat requirements.txt
+
+```
+
+puis les installer un par un avec la commande :
+
+```
+
+pip install <nom du paquage>
+
+```
+
+Démarrage
+Pour démarrer le projet, vous devez aller dans le répertoire du projet et taper sur votre terminal la commande:
+
+<br> 
 ```
 	
-python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 	
 ```
+
+L'application web est disponible en local à l'adresse:  http://localhost:8000/

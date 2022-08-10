@@ -11,6 +11,7 @@
     display: flex;
     align-items: $align;
     justify-content: $justify;
+    flex-wrap: nowrap;
 }
 
 @mixin body-center($width: 50vh, $height: 100vh, $minw, $minh) {
@@ -54,4 +55,16 @@
     background: $bg;
     border: 1px solid $bg;
 }
+
+@mixin mobile-only {
+    @media screen and (max-width: map-get($breakpoints, mobile)){
+      @content;
+    }
+  }
+
+  @mixin pad-only {
+    @media screen and (max-width: map-get($breakpoints, pad)){
+      @content;
+    }
+  }
 

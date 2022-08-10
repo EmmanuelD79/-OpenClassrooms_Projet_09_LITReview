@@ -20,9 +20,10 @@
 
         background-color: $action-button-bg;
         text-decoration: none;
-        width: 300px;
+        width: 40vw;
+        max-width: 300px;
         color: $action-buton-color-font;
-        font-size: 1em;
+        font-size: $font-medium;
         border: solid 1px $action-button-bg;
         border-radius: 10px;
         text-align: center;
@@ -91,8 +92,9 @@ button{
 }
 
 .button-add-user{
-    width: 140px;
-    height: 2em;
+    width: 15vw;
+    line-height: 3vh;
+    font-size: 1.5vw;
 }
 
 .user-unfollow{
@@ -100,8 +102,9 @@ button{
     color: $site-color-font-button;
     text-align: center;
     @include btn-bg-border($site-color-button-delete);
-    width: 15%;
-
+    width: 15vw;
+    font-size: 1.5vw;
+    line-height: 3vh;
     &:hover{
         @extend %delete;
     }

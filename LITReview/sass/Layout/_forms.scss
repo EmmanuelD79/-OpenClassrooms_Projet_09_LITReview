@@ -1,5 +1,6 @@
 .posting-form{
-    width: 700px;
+    width: 80vw;
+    max-width: 700px;
     @include flex-column;
     padding-bottom: 20px;
 
@@ -7,9 +8,9 @@
 
 .form-user{
     position:relative;
-    width: 80%;
+    width: 80vw;
     @include flex-row(center, space-between);
-
+    line-height: 3vh;
     ul{
         display: none;
     }
@@ -22,7 +23,11 @@
     &__add{
         background-color: $site-color-field;
         width: 75%;
-        height: 2em;
+
+    }
+
+    select{
+        margin-right: 1.5vw;
     }
 
 }

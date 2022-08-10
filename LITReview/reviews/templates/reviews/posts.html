@@ -2,7 +2,7 @@
 {% load review_extras %}
 
 {% block content %}
-    <h1>Mes posts</h1>
+    <h2>Mes posts</h2>
     {% for instance in page_obj %}
         <div class="review">
             {% if instance|model_type == 'Review' %}

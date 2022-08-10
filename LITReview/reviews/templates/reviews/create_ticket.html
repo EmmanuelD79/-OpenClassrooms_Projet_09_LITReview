@@ -16,7 +16,11 @@
         <p>
             <label>Image:</label>
             <br>
-            {{ form.image }}
+            <label>
+                <span for="{{form.image.label}}" class="btn btn--edit">Télécharger</span>
+                {{ form.image }}
+            </label>
+
             {{ form.edit_ticket }}
 
         </p>

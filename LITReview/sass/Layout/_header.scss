@@ -5,5 +5,9 @@
     margin-bottom: 30px;
     background-color: $site-color;
     color: $site-color-font;
-    font-size: 1.5em;
+
+    @include pad-only{
+        padding: 0px 0px 0px 0px;
+        @include flex-column(center, None);
+      }
 }

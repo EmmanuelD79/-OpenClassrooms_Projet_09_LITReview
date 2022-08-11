@@ -28,7 +28,6 @@ class Ticket(models.Model):
         except: 
             pass
 
-
     def __str__(self):
         return self.title
 

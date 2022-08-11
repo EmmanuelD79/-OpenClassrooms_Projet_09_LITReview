@@ -90,3 +90,10 @@ python manage.py runserver
 
 
 L'application web est disponible en local à l'adresse:  http://localhost:8000/
+
+Vous pouvez vous connecter pour un test de l'application en utilisant :
+```
+username : Manu
+password : Azerty01
+
+```
